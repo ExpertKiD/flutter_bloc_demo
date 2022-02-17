@@ -1,30 +1,16 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'timer_event.freezed.dart';
-
-abstract class TimerEvent {}
-
-@freezed
-class TimerStarted extends TimerEvent with _$TimerStarted {
-  factory TimerStarted({required int duration}) = _TimerStarted;
-}
+part 'timer_event.g.dart';
 
 @freezed
-class TimerPaused extends TimerEvent with _$TimerPaused {
-  factory TimerPaused() = _TimerPaused;
-}
+class TimerEvent with _$TimerEvent {
+  factory TimerEvent.started({required int duration}) = TimerStartedEvent;
+  factory TimerEvent.paused() = TimerPausedEvent;
+  factory TimerEvent.resumed() = TimerResumedEvent;
+  factory TimerEvent.reset() = TimerResetEvent;
+  factory TimerEvent.ticked({required int duration}) = TimerTickedEvent;
 
-@freezed
-class TimerResumed extends TimerEvent with _$TimerResumed {
-  factory TimerResumed() = _TimerResumed;
-}
-
-@freezed
-class TimerReset extends TimerEvent with _$TimerReset {
-  factory TimerReset() = _TimerReset;
-}
-
-@freezed
-class TimerTicked extends TimerEvent with _$TimerTicked {
-  factory TimerTicked({required int duration}) = _TimerTicked;
+  factory TimerEvent.fromJson(Map<String, dynamic> json) =>
+      _$TimerEventFromJson(json);
 }

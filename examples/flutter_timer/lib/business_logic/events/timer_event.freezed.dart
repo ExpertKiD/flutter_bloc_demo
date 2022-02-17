@@ -13,83 +13,162 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-/// @nodoc
-class _$TimerStartedTearOff {
-  const _$TimerStartedTearOff();
+TimerEvent _$TimerEventFromJson(Map<String, dynamic> json) {
+  switch (json['runtimeType']) {
+    case 'started':
+      return TimerStartedEvent.fromJson(json);
+    case 'paused':
+      return TimerPausedEvent.fromJson(json);
+    case 'resumed':
+      return TimerResumedEvent.fromJson(json);
+    case 'reset':
+      return TimerResetEvent.fromJson(json);
+    case 'ticked':
+      return TimerTickedEvent.fromJson(json);
 
-  _TimerStarted call({required int duration}) {
-    return _TimerStarted(
+    default:
+      throw CheckedFromJsonException(json, 'runtimeType', 'TimerEvent',
+          'Invalid union type "${json['runtimeType']}"!');
+  }
+}
+
+/// @nodoc
+class _$TimerEventTearOff {
+  const _$TimerEventTearOff();
+
+  TimerStartedEvent started({required int duration}) {
+    return TimerStartedEvent(
       duration: duration,
     );
   }
+
+  TimerPausedEvent paused() {
+    return TimerPausedEvent();
+  }
+
+  TimerResumedEvent resumed() {
+    return TimerResumedEvent();
+  }
+
+  TimerResetEvent reset() {
+    return TimerResetEvent();
+  }
+
+  TimerTickedEvent ticked({required int duration}) {
+    return TimerTickedEvent(
+      duration: duration,
+    );
+  }
+
+  TimerEvent fromJson(Map<String, Object?> json) {
+    return TimerEvent.fromJson(json);
+  }
 }
 
 /// @nodoc
-const $TimerStarted = _$TimerStartedTearOff();
+const $TimerEvent = _$TimerEventTearOff();
 
 /// @nodoc
-mixin _$TimerStarted {
-  int get duration => throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $TimerStartedCopyWith<TimerStarted> get copyWith =>
+mixin _$TimerEvent {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int duration) started,
+    required TResult Function() paused,
+    required TResult Function() resumed,
+    required TResult Function() reset,
+    required TResult Function(int duration) ticked,
+  }) =>
       throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(int duration)? started,
+    TResult Function()? paused,
+    TResult Function()? resumed,
+    TResult Function()? reset,
+    TResult Function(int duration)? ticked,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int duration)? started,
+    TResult Function()? paused,
+    TResult Function()? resumed,
+    TResult Function()? reset,
+    TResult Function(int duration)? ticked,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(TimerStartedEvent value) started,
+    required TResult Function(TimerPausedEvent value) paused,
+    required TResult Function(TimerResumedEvent value) resumed,
+    required TResult Function(TimerResetEvent value) reset,
+    required TResult Function(TimerTickedEvent value) ticked,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(TimerStartedEvent value)? started,
+    TResult Function(TimerPausedEvent value)? paused,
+    TResult Function(TimerResumedEvent value)? resumed,
+    TResult Function(TimerResetEvent value)? reset,
+    TResult Function(TimerTickedEvent value)? ticked,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(TimerStartedEvent value)? started,
+    TResult Function(TimerPausedEvent value)? paused,
+    TResult Function(TimerResumedEvent value)? resumed,
+    TResult Function(TimerResetEvent value)? reset,
+    TResult Function(TimerTickedEvent value)? ticked,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $TimerStartedCopyWith<$Res> {
-  factory $TimerStartedCopyWith(
-          TimerStarted value, $Res Function(TimerStarted) then) =
-      _$TimerStartedCopyWithImpl<$Res>;
-  $Res call({int duration});
+abstract class $TimerEventCopyWith<$Res> {
+  factory $TimerEventCopyWith(
+          TimerEvent value, $Res Function(TimerEvent) then) =
+      _$TimerEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$TimerStartedCopyWithImpl<$Res> implements $TimerStartedCopyWith<$Res> {
-  _$TimerStartedCopyWithImpl(this._value, this._then);
+class _$TimerEventCopyWithImpl<$Res> implements $TimerEventCopyWith<$Res> {
+  _$TimerEventCopyWithImpl(this._value, this._then);
 
-  final TimerStarted _value;
+  final TimerEvent _value;
   // ignore: unused_field
-  final $Res Function(TimerStarted) _then;
-
-  @override
-  $Res call({
-    Object? duration = freezed,
-  }) {
-    return _then(_value.copyWith(
-      duration: duration == freezed
-          ? _value.duration
-          : duration // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
+  final $Res Function(TimerEvent) _then;
 }
 
 /// @nodoc
-abstract class _$TimerStartedCopyWith<$Res>
-    implements $TimerStartedCopyWith<$Res> {
-  factory _$TimerStartedCopyWith(
-          _TimerStarted value, $Res Function(_TimerStarted) then) =
-      __$TimerStartedCopyWithImpl<$Res>;
-  @override
+abstract class $TimerStartedEventCopyWith<$Res> {
+  factory $TimerStartedEventCopyWith(
+          TimerStartedEvent value, $Res Function(TimerStartedEvent) then) =
+      _$TimerStartedEventCopyWithImpl<$Res>;
   $Res call({int duration});
 }
 
 /// @nodoc
-class __$TimerStartedCopyWithImpl<$Res> extends _$TimerStartedCopyWithImpl<$Res>
-    implements _$TimerStartedCopyWith<$Res> {
-  __$TimerStartedCopyWithImpl(
-      _TimerStarted _value, $Res Function(_TimerStarted) _then)
-      : super(_value, (v) => _then(v as _TimerStarted));
+class _$TimerStartedEventCopyWithImpl<$Res>
+    extends _$TimerEventCopyWithImpl<$Res>
+    implements $TimerStartedEventCopyWith<$Res> {
+  _$TimerStartedEventCopyWithImpl(
+      TimerStartedEvent _value, $Res Function(TimerStartedEvent) _then)
+      : super(_value, (v) => _then(v as TimerStartedEvent));
 
   @override
-  _TimerStarted get _value => super._value as _TimerStarted;
+  TimerStartedEvent get _value => super._value as TimerStartedEvent;
 
   @override
   $Res call({
     Object? duration = freezed,
   }) {
-    return _then(_TimerStarted(
+    return _then(TimerStartedEvent(
       duration: duration == freezed
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
@@ -99,23 +178,30 @@ class __$TimerStartedCopyWithImpl<$Res> extends _$TimerStartedCopyWithImpl<$Res>
 }
 
 /// @nodoc
+@JsonSerializable()
+class _$TimerStartedEvent implements TimerStartedEvent {
+  _$TimerStartedEvent({required this.duration, String? $type})
+      : $type = $type ?? 'started';
 
-class _$_TimerStarted implements _TimerStarted {
-  _$_TimerStarted({required this.duration});
+  factory _$TimerStartedEvent.fromJson(Map<String, dynamic> json) =>
+      _$$TimerStartedEventFromJson(json);
 
   @override
   final int duration;
 
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
   @override
   String toString() {
-    return 'TimerStarted(duration: $duration)';
+    return 'TimerEvent.started(duration: $duration)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _TimerStarted &&
+            other is TimerStartedEvent &&
             const DeepCollectionEquality().equals(other.duration, duration));
   }
 
@@ -125,284 +211,541 @@ class _$_TimerStarted implements _TimerStarted {
 
   @JsonKey(ignore: true)
   @override
-  _$TimerStartedCopyWith<_TimerStarted> get copyWith =>
-      __$TimerStartedCopyWithImpl<_TimerStarted>(this, _$identity);
-}
-
-abstract class _TimerStarted implements TimerStarted {
-  factory _TimerStarted({required int duration}) = _$_TimerStarted;
+  $TimerStartedEventCopyWith<TimerStartedEvent> get copyWith =>
+      _$TimerStartedEventCopyWithImpl<TimerStartedEvent>(this, _$identity);
 
   @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int duration) started,
+    required TResult Function() paused,
+    required TResult Function() resumed,
+    required TResult Function() reset,
+    required TResult Function(int duration) ticked,
+  }) {
+    return started(duration);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(int duration)? started,
+    TResult Function()? paused,
+    TResult Function()? resumed,
+    TResult Function()? reset,
+    TResult Function(int duration)? ticked,
+  }) {
+    return started?.call(duration);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int duration)? started,
+    TResult Function()? paused,
+    TResult Function()? resumed,
+    TResult Function()? reset,
+    TResult Function(int duration)? ticked,
+    required TResult orElse(),
+  }) {
+    if (started != null) {
+      return started(duration);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(TimerStartedEvent value) started,
+    required TResult Function(TimerPausedEvent value) paused,
+    required TResult Function(TimerResumedEvent value) resumed,
+    required TResult Function(TimerResetEvent value) reset,
+    required TResult Function(TimerTickedEvent value) ticked,
+  }) {
+    return started(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(TimerStartedEvent value)? started,
+    TResult Function(TimerPausedEvent value)? paused,
+    TResult Function(TimerResumedEvent value)? resumed,
+    TResult Function(TimerResetEvent value)? reset,
+    TResult Function(TimerTickedEvent value)? ticked,
+  }) {
+    return started?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(TimerStartedEvent value)? started,
+    TResult Function(TimerPausedEvent value)? paused,
+    TResult Function(TimerResumedEvent value)? resumed,
+    TResult Function(TimerResetEvent value)? reset,
+    TResult Function(TimerTickedEvent value)? ticked,
+    required TResult orElse(),
+  }) {
+    if (started != null) {
+      return started(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$TimerStartedEventToJson(this);
+  }
+}
+
+abstract class TimerStartedEvent implements TimerEvent {
+  factory TimerStartedEvent({required int duration}) = _$TimerStartedEvent;
+
+  factory TimerStartedEvent.fromJson(Map<String, dynamic> json) =
+      _$TimerStartedEvent.fromJson;
+
   int get duration;
-  @override
   @JsonKey(ignore: true)
-  _$TimerStartedCopyWith<_TimerStarted> get copyWith =>
+  $TimerStartedEventCopyWith<TimerStartedEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-class _$TimerPausedTearOff {
-  const _$TimerPausedTearOff();
-
-  _TimerPaused call() {
-    return _TimerPaused();
-  }
+abstract class $TimerPausedEventCopyWith<$Res> {
+  factory $TimerPausedEventCopyWith(
+          TimerPausedEvent value, $Res Function(TimerPausedEvent) then) =
+      _$TimerPausedEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-const $TimerPaused = _$TimerPausedTearOff();
-
-/// @nodoc
-mixin _$TimerPaused {}
-
-/// @nodoc
-abstract class $TimerPausedCopyWith<$Res> {
-  factory $TimerPausedCopyWith(
-          TimerPaused value, $Res Function(TimerPaused) then) =
-      _$TimerPausedCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class _$TimerPausedCopyWithImpl<$Res> implements $TimerPausedCopyWith<$Res> {
-  _$TimerPausedCopyWithImpl(this._value, this._then);
-
-  final TimerPaused _value;
-  // ignore: unused_field
-  final $Res Function(TimerPaused) _then;
-}
-
-/// @nodoc
-abstract class _$TimerPausedCopyWith<$Res> {
-  factory _$TimerPausedCopyWith(
-          _TimerPaused value, $Res Function(_TimerPaused) then) =
-      __$TimerPausedCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$TimerPausedCopyWithImpl<$Res> extends _$TimerPausedCopyWithImpl<$Res>
-    implements _$TimerPausedCopyWith<$Res> {
-  __$TimerPausedCopyWithImpl(
-      _TimerPaused _value, $Res Function(_TimerPaused) _then)
-      : super(_value, (v) => _then(v as _TimerPaused));
+class _$TimerPausedEventCopyWithImpl<$Res>
+    extends _$TimerEventCopyWithImpl<$Res>
+    implements $TimerPausedEventCopyWith<$Res> {
+  _$TimerPausedEventCopyWithImpl(
+      TimerPausedEvent _value, $Res Function(TimerPausedEvent) _then)
+      : super(_value, (v) => _then(v as TimerPausedEvent));
 
   @override
-  _TimerPaused get _value => super._value as _TimerPaused;
+  TimerPausedEvent get _value => super._value as TimerPausedEvent;
 }
 
 /// @nodoc
+@JsonSerializable()
+class _$TimerPausedEvent implements TimerPausedEvent {
+  _$TimerPausedEvent({String? $type}) : $type = $type ?? 'paused';
 
-class _$_TimerPaused implements _TimerPaused {
-  _$_TimerPaused();
+  factory _$TimerPausedEvent.fromJson(Map<String, dynamic> json) =>
+      _$$TimerPausedEventFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
-    return 'TimerPaused()';
+    return 'TimerEvent.paused()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _TimerPaused);
+        (other.runtimeType == runtimeType && other is TimerPausedEvent);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-}
 
-abstract class _TimerPaused implements TimerPaused {
-  factory _TimerPaused() = _$_TimerPaused;
-}
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int duration) started,
+    required TResult Function() paused,
+    required TResult Function() resumed,
+    required TResult Function() reset,
+    required TResult Function(int duration) ticked,
+  }) {
+    return paused();
+  }
 
-/// @nodoc
-class _$TimerResumedTearOff {
-  const _$TimerResumedTearOff();
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(int duration)? started,
+    TResult Function()? paused,
+    TResult Function()? resumed,
+    TResult Function()? reset,
+    TResult Function(int duration)? ticked,
+  }) {
+    return paused?.call();
+  }
 
-  _TimerResumed call() {
-    return _TimerResumed();
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int duration)? started,
+    TResult Function()? paused,
+    TResult Function()? resumed,
+    TResult Function()? reset,
+    TResult Function(int duration)? ticked,
+    required TResult orElse(),
+  }) {
+    if (paused != null) {
+      return paused();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(TimerStartedEvent value) started,
+    required TResult Function(TimerPausedEvent value) paused,
+    required TResult Function(TimerResumedEvent value) resumed,
+    required TResult Function(TimerResetEvent value) reset,
+    required TResult Function(TimerTickedEvent value) ticked,
+  }) {
+    return paused(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(TimerStartedEvent value)? started,
+    TResult Function(TimerPausedEvent value)? paused,
+    TResult Function(TimerResumedEvent value)? resumed,
+    TResult Function(TimerResetEvent value)? reset,
+    TResult Function(TimerTickedEvent value)? ticked,
+  }) {
+    return paused?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(TimerStartedEvent value)? started,
+    TResult Function(TimerPausedEvent value)? paused,
+    TResult Function(TimerResumedEvent value)? resumed,
+    TResult Function(TimerResetEvent value)? reset,
+    TResult Function(TimerTickedEvent value)? ticked,
+    required TResult orElse(),
+  }) {
+    if (paused != null) {
+      return paused(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$TimerPausedEventToJson(this);
   }
 }
 
-/// @nodoc
-const $TimerResumed = _$TimerResumedTearOff();
+abstract class TimerPausedEvent implements TimerEvent {
+  factory TimerPausedEvent() = _$TimerPausedEvent;
 
-/// @nodoc
-mixin _$TimerResumed {}
-
-/// @nodoc
-abstract class $TimerResumedCopyWith<$Res> {
-  factory $TimerResumedCopyWith(
-          TimerResumed value, $Res Function(TimerResumed) then) =
-      _$TimerResumedCopyWithImpl<$Res>;
+  factory TimerPausedEvent.fromJson(Map<String, dynamic> json) =
+      _$TimerPausedEvent.fromJson;
 }
 
 /// @nodoc
-class _$TimerResumedCopyWithImpl<$Res> implements $TimerResumedCopyWith<$Res> {
-  _$TimerResumedCopyWithImpl(this._value, this._then);
-
-  final TimerResumed _value;
-  // ignore: unused_field
-  final $Res Function(TimerResumed) _then;
+abstract class $TimerResumedEventCopyWith<$Res> {
+  factory $TimerResumedEventCopyWith(
+          TimerResumedEvent value, $Res Function(TimerResumedEvent) then) =
+      _$TimerResumedEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-abstract class _$TimerResumedCopyWith<$Res> {
-  factory _$TimerResumedCopyWith(
-          _TimerResumed value, $Res Function(_TimerResumed) then) =
-      __$TimerResumedCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$TimerResumedCopyWithImpl<$Res> extends _$TimerResumedCopyWithImpl<$Res>
-    implements _$TimerResumedCopyWith<$Res> {
-  __$TimerResumedCopyWithImpl(
-      _TimerResumed _value, $Res Function(_TimerResumed) _then)
-      : super(_value, (v) => _then(v as _TimerResumed));
+class _$TimerResumedEventCopyWithImpl<$Res>
+    extends _$TimerEventCopyWithImpl<$Res>
+    implements $TimerResumedEventCopyWith<$Res> {
+  _$TimerResumedEventCopyWithImpl(
+      TimerResumedEvent _value, $Res Function(TimerResumedEvent) _then)
+      : super(_value, (v) => _then(v as TimerResumedEvent));
 
   @override
-  _TimerResumed get _value => super._value as _TimerResumed;
+  TimerResumedEvent get _value => super._value as TimerResumedEvent;
 }
 
 /// @nodoc
+@JsonSerializable()
+class _$TimerResumedEvent implements TimerResumedEvent {
+  _$TimerResumedEvent({String? $type}) : $type = $type ?? 'resumed';
 
-class _$_TimerResumed implements _TimerResumed {
-  _$_TimerResumed();
+  factory _$TimerResumedEvent.fromJson(Map<String, dynamic> json) =>
+      _$$TimerResumedEventFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
-    return 'TimerResumed()';
+    return 'TimerEvent.resumed()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _TimerResumed);
+        (other.runtimeType == runtimeType && other is TimerResumedEvent);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-}
 
-abstract class _TimerResumed implements TimerResumed {
-  factory _TimerResumed() = _$_TimerResumed;
-}
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int duration) started,
+    required TResult Function() paused,
+    required TResult Function() resumed,
+    required TResult Function() reset,
+    required TResult Function(int duration) ticked,
+  }) {
+    return resumed();
+  }
 
-/// @nodoc
-class _$TimerResetTearOff {
-  const _$TimerResetTearOff();
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(int duration)? started,
+    TResult Function()? paused,
+    TResult Function()? resumed,
+    TResult Function()? reset,
+    TResult Function(int duration)? ticked,
+  }) {
+    return resumed?.call();
+  }
 
-  _TimerReset call() {
-    return _TimerReset();
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int duration)? started,
+    TResult Function()? paused,
+    TResult Function()? resumed,
+    TResult Function()? reset,
+    TResult Function(int duration)? ticked,
+    required TResult orElse(),
+  }) {
+    if (resumed != null) {
+      return resumed();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(TimerStartedEvent value) started,
+    required TResult Function(TimerPausedEvent value) paused,
+    required TResult Function(TimerResumedEvent value) resumed,
+    required TResult Function(TimerResetEvent value) reset,
+    required TResult Function(TimerTickedEvent value) ticked,
+  }) {
+    return resumed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(TimerStartedEvent value)? started,
+    TResult Function(TimerPausedEvent value)? paused,
+    TResult Function(TimerResumedEvent value)? resumed,
+    TResult Function(TimerResetEvent value)? reset,
+    TResult Function(TimerTickedEvent value)? ticked,
+  }) {
+    return resumed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(TimerStartedEvent value)? started,
+    TResult Function(TimerPausedEvent value)? paused,
+    TResult Function(TimerResumedEvent value)? resumed,
+    TResult Function(TimerResetEvent value)? reset,
+    TResult Function(TimerTickedEvent value)? ticked,
+    required TResult orElse(),
+  }) {
+    if (resumed != null) {
+      return resumed(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$TimerResumedEventToJson(this);
   }
 }
 
-/// @nodoc
-const $TimerReset = _$TimerResetTearOff();
+abstract class TimerResumedEvent implements TimerEvent {
+  factory TimerResumedEvent() = _$TimerResumedEvent;
 
-/// @nodoc
-mixin _$TimerReset {}
-
-/// @nodoc
-abstract class $TimerResetCopyWith<$Res> {
-  factory $TimerResetCopyWith(
-          TimerReset value, $Res Function(TimerReset) then) =
-      _$TimerResetCopyWithImpl<$Res>;
+  factory TimerResumedEvent.fromJson(Map<String, dynamic> json) =
+      _$TimerResumedEvent.fromJson;
 }
 
 /// @nodoc
-class _$TimerResetCopyWithImpl<$Res> implements $TimerResetCopyWith<$Res> {
-  _$TimerResetCopyWithImpl(this._value, this._then);
-
-  final TimerReset _value;
-  // ignore: unused_field
-  final $Res Function(TimerReset) _then;
+abstract class $TimerResetEventCopyWith<$Res> {
+  factory $TimerResetEventCopyWith(
+          TimerResetEvent value, $Res Function(TimerResetEvent) then) =
+      _$TimerResetEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-abstract class _$TimerResetCopyWith<$Res> {
-  factory _$TimerResetCopyWith(
-          _TimerReset value, $Res Function(_TimerReset) then) =
-      __$TimerResetCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$TimerResetCopyWithImpl<$Res> extends _$TimerResetCopyWithImpl<$Res>
-    implements _$TimerResetCopyWith<$Res> {
-  __$TimerResetCopyWithImpl(
-      _TimerReset _value, $Res Function(_TimerReset) _then)
-      : super(_value, (v) => _then(v as _TimerReset));
+class _$TimerResetEventCopyWithImpl<$Res> extends _$TimerEventCopyWithImpl<$Res>
+    implements $TimerResetEventCopyWith<$Res> {
+  _$TimerResetEventCopyWithImpl(
+      TimerResetEvent _value, $Res Function(TimerResetEvent) _then)
+      : super(_value, (v) => _then(v as TimerResetEvent));
 
   @override
-  _TimerReset get _value => super._value as _TimerReset;
+  TimerResetEvent get _value => super._value as TimerResetEvent;
 }
 
 /// @nodoc
+@JsonSerializable()
+class _$TimerResetEvent implements TimerResetEvent {
+  _$TimerResetEvent({String? $type}) : $type = $type ?? 'reset';
 
-class _$_TimerReset implements _TimerReset {
-  _$_TimerReset();
+  factory _$TimerResetEvent.fromJson(Map<String, dynamic> json) =>
+      _$$TimerResetEventFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
-    return 'TimerReset()';
+    return 'TimerEvent.reset()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _TimerReset);
+        (other.runtimeType == runtimeType && other is TimerResetEvent);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-}
 
-abstract class _TimerReset implements TimerReset {
-  factory _TimerReset() = _$_TimerReset;
-}
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int duration) started,
+    required TResult Function() paused,
+    required TResult Function() resumed,
+    required TResult Function() reset,
+    required TResult Function(int duration) ticked,
+  }) {
+    return reset();
+  }
 
-/// @nodoc
-class _$TimerTickedTearOff {
-  const _$TimerTickedTearOff();
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(int duration)? started,
+    TResult Function()? paused,
+    TResult Function()? resumed,
+    TResult Function()? reset,
+    TResult Function(int duration)? ticked,
+  }) {
+    return reset?.call();
+  }
 
-  _TimerTicked call({required int duration}) {
-    return _TimerTicked(
-      duration: duration,
-    );
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int duration)? started,
+    TResult Function()? paused,
+    TResult Function()? resumed,
+    TResult Function()? reset,
+    TResult Function(int duration)? ticked,
+    required TResult orElse(),
+  }) {
+    if (reset != null) {
+      return reset();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(TimerStartedEvent value) started,
+    required TResult Function(TimerPausedEvent value) paused,
+    required TResult Function(TimerResumedEvent value) resumed,
+    required TResult Function(TimerResetEvent value) reset,
+    required TResult Function(TimerTickedEvent value) ticked,
+  }) {
+    return reset(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(TimerStartedEvent value)? started,
+    TResult Function(TimerPausedEvent value)? paused,
+    TResult Function(TimerResumedEvent value)? resumed,
+    TResult Function(TimerResetEvent value)? reset,
+    TResult Function(TimerTickedEvent value)? ticked,
+  }) {
+    return reset?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(TimerStartedEvent value)? started,
+    TResult Function(TimerPausedEvent value)? paused,
+    TResult Function(TimerResumedEvent value)? resumed,
+    TResult Function(TimerResetEvent value)? reset,
+    TResult Function(TimerTickedEvent value)? ticked,
+    required TResult orElse(),
+  }) {
+    if (reset != null) {
+      return reset(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$TimerResetEventToJson(this);
   }
 }
 
-/// @nodoc
-const $TimerTicked = _$TimerTickedTearOff();
+abstract class TimerResetEvent implements TimerEvent {
+  factory TimerResetEvent() = _$TimerResetEvent;
 
-/// @nodoc
-mixin _$TimerTicked {
-  int get duration => throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $TimerTickedCopyWith<TimerTicked> get copyWith =>
-      throw _privateConstructorUsedError;
+  factory TimerResetEvent.fromJson(Map<String, dynamic> json) =
+      _$TimerResetEvent.fromJson;
 }
 
 /// @nodoc
-abstract class $TimerTickedCopyWith<$Res> {
-  factory $TimerTickedCopyWith(
-          TimerTicked value, $Res Function(TimerTicked) then) =
-      _$TimerTickedCopyWithImpl<$Res>;
+abstract class $TimerTickedEventCopyWith<$Res> {
+  factory $TimerTickedEventCopyWith(
+          TimerTickedEvent value, $Res Function(TimerTickedEvent) then) =
+      _$TimerTickedEventCopyWithImpl<$Res>;
   $Res call({int duration});
 }
 
 /// @nodoc
-class _$TimerTickedCopyWithImpl<$Res> implements $TimerTickedCopyWith<$Res> {
-  _$TimerTickedCopyWithImpl(this._value, this._then);
+class _$TimerTickedEventCopyWithImpl<$Res>
+    extends _$TimerEventCopyWithImpl<$Res>
+    implements $TimerTickedEventCopyWith<$Res> {
+  _$TimerTickedEventCopyWithImpl(
+      TimerTickedEvent _value, $Res Function(TimerTickedEvent) _then)
+      : super(_value, (v) => _then(v as TimerTickedEvent));
 
-  final TimerTicked _value;
-  // ignore: unused_field
-  final $Res Function(TimerTicked) _then;
+  @override
+  TimerTickedEvent get _value => super._value as TimerTickedEvent;
 
   @override
   $Res call({
     Object? duration = freezed,
   }) {
-    return _then(_value.copyWith(
+    return _then(TimerTickedEvent(
       duration: duration == freezed
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
@@ -412,56 +755,30 @@ class _$TimerTickedCopyWithImpl<$Res> implements $TimerTickedCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$TimerTickedCopyWith<$Res>
-    implements $TimerTickedCopyWith<$Res> {
-  factory _$TimerTickedCopyWith(
-          _TimerTicked value, $Res Function(_TimerTicked) then) =
-      __$TimerTickedCopyWithImpl<$Res>;
-  @override
-  $Res call({int duration});
-}
+@JsonSerializable()
+class _$TimerTickedEvent implements TimerTickedEvent {
+  _$TimerTickedEvent({required this.duration, String? $type})
+      : $type = $type ?? 'ticked';
 
-/// @nodoc
-class __$TimerTickedCopyWithImpl<$Res> extends _$TimerTickedCopyWithImpl<$Res>
-    implements _$TimerTickedCopyWith<$Res> {
-  __$TimerTickedCopyWithImpl(
-      _TimerTicked _value, $Res Function(_TimerTicked) _then)
-      : super(_value, (v) => _then(v as _TimerTicked));
-
-  @override
-  _TimerTicked get _value => super._value as _TimerTicked;
-
-  @override
-  $Res call({
-    Object? duration = freezed,
-  }) {
-    return _then(_TimerTicked(
-      duration: duration == freezed
-          ? _value.duration
-          : duration // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_TimerTicked implements _TimerTicked {
-  _$_TimerTicked({required this.duration});
+  factory _$TimerTickedEvent.fromJson(Map<String, dynamic> json) =>
+      _$$TimerTickedEventFromJson(json);
 
   @override
   final int duration;
 
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
   @override
   String toString() {
-    return 'TimerTicked(duration: $duration)';
+    return 'TimerEvent.ticked(duration: $duration)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _TimerTicked &&
+            other is TimerTickedEvent &&
             const DeepCollectionEquality().equals(other.duration, duration));
   }
 
@@ -471,17 +788,103 @@ class _$_TimerTicked implements _TimerTicked {
 
   @JsonKey(ignore: true)
   @override
-  _$TimerTickedCopyWith<_TimerTicked> get copyWith =>
-      __$TimerTickedCopyWithImpl<_TimerTicked>(this, _$identity);
+  $TimerTickedEventCopyWith<TimerTickedEvent> get copyWith =>
+      _$TimerTickedEventCopyWithImpl<TimerTickedEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int duration) started,
+    required TResult Function() paused,
+    required TResult Function() resumed,
+    required TResult Function() reset,
+    required TResult Function(int duration) ticked,
+  }) {
+    return ticked(duration);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(int duration)? started,
+    TResult Function()? paused,
+    TResult Function()? resumed,
+    TResult Function()? reset,
+    TResult Function(int duration)? ticked,
+  }) {
+    return ticked?.call(duration);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int duration)? started,
+    TResult Function()? paused,
+    TResult Function()? resumed,
+    TResult Function()? reset,
+    TResult Function(int duration)? ticked,
+    required TResult orElse(),
+  }) {
+    if (ticked != null) {
+      return ticked(duration);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(TimerStartedEvent value) started,
+    required TResult Function(TimerPausedEvent value) paused,
+    required TResult Function(TimerResumedEvent value) resumed,
+    required TResult Function(TimerResetEvent value) reset,
+    required TResult Function(TimerTickedEvent value) ticked,
+  }) {
+    return ticked(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(TimerStartedEvent value)? started,
+    TResult Function(TimerPausedEvent value)? paused,
+    TResult Function(TimerResumedEvent value)? resumed,
+    TResult Function(TimerResetEvent value)? reset,
+    TResult Function(TimerTickedEvent value)? ticked,
+  }) {
+    return ticked?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(TimerStartedEvent value)? started,
+    TResult Function(TimerPausedEvent value)? paused,
+    TResult Function(TimerResumedEvent value)? resumed,
+    TResult Function(TimerResetEvent value)? reset,
+    TResult Function(TimerTickedEvent value)? ticked,
+    required TResult orElse(),
+  }) {
+    if (ticked != null) {
+      return ticked(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$TimerTickedEventToJson(this);
+  }
 }
 
-abstract class _TimerTicked implements TimerTicked {
-  factory _TimerTicked({required int duration}) = _$_TimerTicked;
+abstract class TimerTickedEvent implements TimerEvent {
+  factory TimerTickedEvent({required int duration}) = _$TimerTickedEvent;
 
-  @override
+  factory TimerTickedEvent.fromJson(Map<String, dynamic> json) =
+      _$TimerTickedEvent.fromJson;
+
   int get duration;
-  @override
   @JsonKey(ignore: true)
-  _$TimerTickedCopyWith<_TimerTicked> get copyWith =>
+  $TimerTickedEventCopyWith<TimerTickedEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
