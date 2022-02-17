@@ -5,6 +5,14 @@ class TimerText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text('');
+    final duration = context.select((TimerBloc bloc) => bloc.state.duration);
+
+    final minuteStr = ((duration / 60) % 60).floor().toString().padLeft(2, '0');
+    final secondStr = (duration % 60).toString().padLeft(2, '0');
+
+    return Text(
+      '$minuteStr:$secondStr',
+      style: Theme.of(context).textTheme.headline1,
+    );
   }
 }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_timer/business_logic/blocs/timer_bloc.dart';
+import 'package:provider/provider.dart';
 
 part 'background.dart';
 part 'timer_actions.dart';
